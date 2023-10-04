@@ -4,3 +4,4 @@
 - [Bouncing Ball](01-Ball)
 
 ## Projects
+- [Interactive Scene](js-scene)
