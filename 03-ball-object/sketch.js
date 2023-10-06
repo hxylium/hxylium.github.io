@@ -41,11 +41,11 @@ function moveBall(){
     theBall.y = 0 - theBall.d;
   }
 
-  if (theBall.x < 0){
-    theBall.x = 0 - theBall.d;
-  }
+  // if (theBall.x < 0){
+  //   theBall.x = 0 - theBall.d;
+  // }
 
-  if(theBall.y < 0){
-    theBall.y = 0 - theBall.d;
-  }
+  // if(theBall.y < 0){
+  //   theBall.y = 0 - theBall.d;
+  // }
 }
