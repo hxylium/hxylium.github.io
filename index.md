@@ -2,7 +2,8 @@
 
 ## Demos
 - [Bouncing Ball](01-Ball)
-- [Ball Object Ntation](03-ball-object)
+- [Ball Object Ntation](02-ball-object)
 
 ## Projects
-- [Interactive Assignment](tank-game)
+- [Interactive Assignment](03-tank-game)
+- [Arrays/Objects Assignment](04-Arrays-assignment)
