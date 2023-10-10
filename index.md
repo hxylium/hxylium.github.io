@@ -5,5 +5,4 @@
 - [Ball Object Ntation](03-ball-object)
 
 ## Projects
-- [Interactive Scene](js-scene)
-- [Interactive Assignment](Tank-game)
+- [Interactive Assignment](tank-game)
