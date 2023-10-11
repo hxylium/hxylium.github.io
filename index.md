@@ -6,5 +6,4 @@
 - [Ball Array](05-ball-array)
 
 ## Projects
-- [Interactive Assignment](03-tank-game)
-- [Arrays/Objects Assignment](04-Arrays-assignment)
+- [Interactive Assignment/Tank Game v0](03-tank-game)
