@@ -9,16 +9,18 @@
 // Declare variables to store game state and player information
 let x, x2;           // Tank X-axis positions for Player 1 and Player 2
 let y;               // Tank Y-axis position
+let Pw, Pl, ps, Pw2, Pl2, ps2;
 let dx, dy;          // Bullet movement speed in X and Y directions
 let btx, bty;
 let t, t1, t3, t4;   // Time variables
 let rw, rl;           // Variables for game boundaries
-let bx, by;           // Bullet positions for Player 1 and Player 2
+let bx, by, bx2, by2;           // Bullet positions for Player 1 and Player 2
 let bd;              // Bullet diameter
 let i, i2;           // Iteration variables for bullet trajectory
 let len, len2;        // Length variables for bullet trajectory arrays
 let shoot, shoot2;   // State variables to track shooting
 let btx2, bty2; // Arrays to store bullet trajectories
+let dx2, dy2;          // Bullet movement speed in X and Y directions
 let w, a, s, d;      // Keycodes for player controls
 let up, left, down, right; // Keycodes for player 2 controls
 let shift, enter;    // Keycodes for special actions
@@ -39,7 +41,7 @@ function preload(){
   backg = loadImage("background.png");
   playButton = loadImage("play_button.png");
   resetButton = loadImage("reset.png");
-  homeButton = loadImage("home_button.png")
+  homeButton = loadImage("home_button.png");
   controls = loadImage("controls.png");
   settings = loadImage("settings.png");
   startEnd = loadImage("start_end.jpg");
@@ -114,7 +116,7 @@ function draw() {
     // Game is running, update and render game elements
     image(backg, 0, 0, width, height);
     P1();
-    trajectoryP1()
+    trajectoryP1();
     P1move();
     P1shoot();    
     P2();
@@ -223,7 +225,9 @@ function P1shoot(){
     i = 0;
   }
 
-  if (shoot) {circle(btx[i], bty[i-1], bd);} // Render Player 1's bullet
+  if (shoot){
+    circle(btx[i], bty[i-1], bd);
+  } // Render Player 1's bullet
 
   if (millis() - t >= 60 && i < len+1 && shoot) {
     i++;
@@ -245,7 +249,9 @@ function P2shoot(){
     i2 = 0;
   }
 
-  if (shoot2) {circle(btx2[i2], bty2[i2-1], bd);} // Render Player 2's bullet
+  if (shoot2){
+    circle(btx2[i2], bty2[i2-1], bd);
+  } // Render Player 2's bullet
 
   if (millis() - t3 >= 60 && i2 < len2+1 && shoot2) {
     i2++;
