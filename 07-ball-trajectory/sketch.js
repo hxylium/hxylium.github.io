@@ -1,59 +1,51 @@
-// 2nd Assignment/Bullet Trajectory System
-// Hyder Shahzaib Ahmed
-// 10/13/2023
-//
-// Extra for Experts:
-// Learned to go above and beyond just arrays and used constructors and specified the bullet its own properties
+// Create a Matter.js engine and world
+let engine;
+let world;
 
-const dx = 12;
-
-let dy;
-let x;
-let y;
-let shoot;
-let enter;
-let t;
-let bullet;
-let bulletArray = [];
+// Create a cannonball object
+let cannonball;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  x = width/3;
-  y = height-height/3;
-  dy = -25;
-  shoot = false;
-  enter = 13;
-  t = millis();
-  spawnBullet();
+  createCanvas(800, 400);
+  engine = Matter.Engine.create();
+  world = engine.world;
+
+  // Create the ground
+  let ground = Matter.Bodies.rectangle(width / 2, height, width, 10, { isStatic: true });
+  Matter.World.add(world, ground);
+
+  // Create the cannonball
+  cannonball = Matter.Bodies.circle(50, height - 20, 10);
+  Matter.World.add(world, cannonball);
 }
 
 function draw() {
   background(220);
 
-  if (keyIsDown(enter)){
-    shoot = true;
-  }
+  // Apply gravity to the cannonball
+  let gravityForce = { x: 0, y: 0.1 }; // Stronger gravity effect
+  Matter.Body.applyForce(cannonball, cannonball.position, gravityForce);
 
-  if (millis() - t >= 2000){
-    shoot = false;
-    t = millis();
-  }
+  // Update the Matter.js engine
+  Matter.Engine.update(engine);
 
-  if (shoot){
-    for (let theBullet of bulletArray){
-      theBullet.x = x;
-      theBullet.y = y;
-      circle(theBullet.x, theBullet.y, 50);
-    }
-    console.log(shoot);
+  // Display the cannonball
+  fill(0);
+  let pos = cannonball.position;
+  circle(pos.x, pos.y, 20);
+
+  // Check if the cannonball goes off-screen
+  if (pos.x > width || pos.y > height) {
+    // Reset the position
+    Matter.Body.setPosition(cannonball, { x: 50, y: height - 20 });
+    Matter.Body.setVelocity(cannonball, { x: 0, y: 0 });
   }
-  console.log(shoot);
 }
 
-function spawnBullet(){
-  let bullet = {
-    bx: x,
-    by: y,
-  };
-  bulletArray.push(bullet);
+function keyPressed() {
+  if (key === ' ' && cannonball.speed < 1) {
+    // Apply an initial velocity to simulate shooting
+    let force = Matter.Vector.create(0.1, -0.3); // Adjust the values for the desired trajectory
+    Matter.Body.applyForce(cannonball, cannonball.position, force);
+  }
 }
