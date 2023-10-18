@@ -10,6 +10,7 @@
 
 ## Projects
 - [Interactive Assignment/Tank Game v0](03-tank-game)
+- [Madlib Assignment/Object-Notation](09-madlib-ass)
 
 ## Experiments
 - [Ball Trajectory & Constructors](07-ball-trajectory)
