@@ -3,7 +3,7 @@
 // 10/18/2023
 //
 // Extra for Experts:
-// My extra for experts would be using the premade button and inout field functions of P5js, the only reason I used the premade ones were to keep the code simplistic.
+// My extra for experts would be using the premade button and input field functions of P5js, the only reason I used the premade ones were to keep the code simplistic.
 
 
 let verbInput;
@@ -33,6 +33,10 @@ function draw() {
   background(220);
 
   console.log(verb);
+}
+
+function takingInputs(){
+  
 }
 
 function processInput() {
