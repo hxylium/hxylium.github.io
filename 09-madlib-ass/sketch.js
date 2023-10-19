@@ -12,19 +12,35 @@ let blanks = {
   verb: "",
   noun: "",
   adjective: "",
+  uChoice: "",
 };
 let vy, ny, ay;
+let logo;
+
+function preLoad(){
+  logo = loadImage("mad.png");
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   vy = 20;
   ny = 60;
   ay = 100;
+  imageMode(CENTER);
 }
 
 function draw() {
   background(220);
-  sendChoice();
+  startScreen();
+}
+
+function startScreen(){
+  image(logo, width/2, -200);
+  textSize(30);
+  textAlign(CENTER);
+  text("Welcome to a basic madlib game!", width/2, height/3);
+  text("Select whether you would like a randomized madlib", width/2, height/3+30);
+  text("OR", width/2, height/3+60);
 }
 
 function createUIn(){
@@ -57,36 +73,48 @@ function processInput(){
   endScreen();
 }
 
+function processChoiceIn(){
+  // Saving the user choice
+  blanks.uChoice = uIn.value();
+
+  // Hiding the buttons once values are stored
+  choiceButton.hide();
+  uIn.hide();
+}
+
 function endScreen(){
   verbIn.hide();
   nounIn.hide();
   adjectiveIn.hide();
   submitButton.hide();
-
-  if (uIn === "1"){
-    sendChoice();
-  }
-  else if (uIn === "0"){
-    generateMadlib(random(2));
-  }
-  // displaying the chosen madlib
-  generateMadlib(int(blanks.userChoice));
 }
 
 function sendChoice(){
+  // Providing a field and button to actually submit
+  // Create a field for the user to input text
+  uIn = createInput();
+  uIn.size(80, 20);
+  uIn.position(width/2-40, height/2);
+  
+  // Create a submit button
+  choiceButton = createButton("Submit");
+  choiceButton.size(60, 26);
+  choiceButton.position(width/2-30, height/2+50);
+  choiceButton.mousePressed(processChoiceIn);
+}
+
+function choices(){
   textSize(30);
   textAlign(CENTER);
   text("What would you like to choose from the", width/2, height/6);
   text("bottom two choices?", width/2, height/6+32);
   textSize(18);
   text("Please input 0 or 1", width/2, height/6+60);
-
+  
   // Showing the choices
   textSize(26);
   text("0: Anna's Gardma's house", width/2, height/3+40);
   text("1: The World", width/2, height/3+80);
-
-  // Providing a field and button to actually submit
 }
 
 function generateMadlib(i){
