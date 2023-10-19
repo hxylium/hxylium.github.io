@@ -1,19 +1,12 @@
-// Madlibs using Object Notation
-// Hyder Shahzaib Ahmed
-// 10/18/2023
-//
-// Extra for Experts:
-// My extra for experts would be using the premade button and input field functions of P5js, the only reason I used the premade ones were to keep the code simplistic.
-
-
-let verbInput;
 let submitButton;
-let userInput;
-let verb;
-let pick_verb = "something";
-let madlibs = [
-  `Anna was visiting Grandmas house and decided to ${pick_verb} in the attic while grandma ${pick_verb} lunch. There were`
-];
+let verbInput;
+let blanks = {
+  verb: "",
+  noun: "",
+  adjective: "",
+  Name: ""
+};
+let madlibs;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -21,29 +14,44 @@ function setup() {
   // Create an input field
   verbInput = createInput();
   verbInput.position(20, 20);
+  verbInput.id("myText");
+  processInput();
 
   // Create a submit button
   submitButton = createButton("Submit");
   submitButton.position(20, 50);
   submitButton.mousePressed(processInput);
-  console.log(madlibs[0]);
+  submitButton.id("myButton");
 }
 
 function draw() {
   background(220);
-
-  console.log(verb);
-}
-
-function takingInputs(){
   
+  if (key === "d"){
+    let removeB = select('#myButton');
+    removeB.remove();
+    let removeT = select('#myText');
+    removeT.remove();
+    text("Deleted", width/2, height/2);
+  }
+
+  circle(width/2, height/2, 50);
+
+  console.log(blanks.verb);
+  console.log(madlibs);
 }
 
 function processInput() {
   // Get the value entered by the user in the input field
-  verb = verbInput.value();
-  // Display the user's input
-  textSize(42);
-  text(`You entered: ${userInput}`, 20, 100);
-  // You can perform further actions with the user's input here
+  blanks.verb = verbInput.value();
+
+  // Generate the madlib using user-entered values
+  madlibs = generateMadlib(1);
+
+  // Redraw the canvas to display the madlib
+  redraw();
+}
+
+function generateMadlib(i) {
+  return [[`Anna was visiting Grandma's house and decided to ${blanks.verb} in the attic while Grandma ${blanks.verb} lunch. There were`], [`many ${blanks.verb} things for her to see. Just then she heard someone ${blanks.verb} the `]][i];
 }
