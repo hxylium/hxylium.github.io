@@ -5,19 +5,21 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-let submitButton, choiceButton, newButton;
+let submitButton, zeroButton, oneButton;
 let userChoice;
 let verbIn, nounIn, adjectiveIn, uIn;
 let blanks = {
   verb: "",
   noun: "",
   adjective: "",
-  uChoice: "",
+  madlib: "",
 };
+let i;
 let vy, ny, ay;
 let logo;
+let gameState = "Initialize";
 
-function preLoad(){
+function preload(){
   logo = loadImage("mad.png");
 }
 
@@ -26,103 +28,147 @@ function setup() {
   vy = 20;
   ny = 60;
   ay = 100;
-  imageMode(CENTER);
-  preLoad();
+  preload();
+  initialize();
 }
 
 
 function draw() {
   background(220);
-  startScreen();
-}
-
-function startScreen(){
   image(logo, width/2, logo.height/6, logo.width/3, logo.height/4);
-  textSize(30);
-  textAlign(CENTER);
-  text("Welcome to a basic madlib game!", width/2, height/3);
-  newButton = createButton("Select whether you would like a randomized madlib");
-  newButton.position(width/2, height/2+30);
-  // newButton.size(width/1.2, 30);
-  // text("Select whether you would like a randomized madlib", width/2, height/3+30);
-  textSize(20);
-  text("OR", width/2, height/3+60);
-  textSize(30);
-  text("You select which madlib to do and play!", width/2, height/3+90);
+  
+  choices();  
+  takeIn();
+  showMadlib();
 }
 
-function createUIn(){
-  // Creating User inputs
-  // User input for the verbs
-  verbIn = createInput();
-  verbIn.position(20, vy);
-
-  // User input for nouns
-  nounIn = createInput();
-  nounIn.position(20, ny);
-
-  // User input for adjectives
-  adjectiveIn = createInput();
-  adjectiveIn.position(20, ay);
-
-  // Creating a button that once clicked saves whatever is in the input fields above
-  // Create a submit button
-  submitButton = createButton("Submit");
-  submitButton.position(20, ay+40);
-  submitButton.mousePressed(processInput);
+function choices(){
+  if (gameState === "Initialize"){
+    text("OR", width/2-10, height/3+100);
+    textSize(20);
+  
+    if (gameState === "Initialize"){
+      zeroButton.show();
+      oneButton.show();
+    }
+  
+    zeroButton.mousePressed(function() {
+      gameState = "playing";
+      zeroButton.hide();
+      oneButton.hide();
+      i = 0;
+      takeIn();
+    });
+    oneButton.mousePressed(function() {
+      gameState = "playing";
+      zeroButton.hide();
+      oneButton.hide();
+      i = 1;
+      takeIn();
+    });
+  }
 }
 
-function processInput(){
-  // when the submit btton is clicked the following objects saves the user inputs
-  blanks.verb = verbIn.value();
-  blanks.noun = nounIn.value();
-  blanks.adjective = adjectiveIn.value();
+function takeIn(){
+  if (gameState === "playing"){
+    verbIn.show();
+    nounIn.show();
+    adjectiveIn.show();
+    submitButton.show();
+    gameState = "entering";
+  }
 
-  endScreen();
+  if (gameState === "entering"){
+    textSize(20);
+    textAlign(LEFT);
+    text("Enter a verb below: ", width/2-width/2/2, height/4-10);
+    text("Enter a noun below: ", width/2-width/2/2, height/4+70);
+    text("Enter a adjective below: ", width/2-width/2/2, height/4+150);
+    submitButton.mousePressed(end);
+    textAlign(CENTER);
+  }
 }
 
-function processChoiceIn(){
-  // Saving the user choice
-  blanks.uChoice = uIn.value();
-
-  // Hiding the buttons once values are stored
-  choiceButton.hide();
-  uIn.hide();
-}
-
-function endScreen(){
+function end(){
   verbIn.hide();
   nounIn.hide();
   adjectiveIn.hide();
   submitButton.hide();
+  // when the submit button is clicked the following objects saves the user inputs
+  blanks.verb = verbIn.value();
+  blanks.noun = nounIn.value();
+  blanks.adjective = adjectiveIn.value();
+  blanks.madlib = generateMadlib(i);
+  gameState = "showMadlib";
 }
 
-function sendChoice(){
-  // Providing a field and button to actually submit
-  // Create a field for the user to input text
-  uIn = createInput();
-  uIn.size(80, 20);
-  uIn.position(width/2-40, height/2);
-  
-  // Create a submit button
-  choiceButton = createButton("Submit");
-  choiceButton.size(60, 26);
-  choiceButton.position(width/2-30, height/2+50);
-  choiceButton.mousePressed(processChoiceIn);
+function showMadlib(){
+  if (gameState === "showMadlib"){
+    textSize(18);
+    fill(140, 140, 140);
+    noStroke();
+    rect(width/2-width/1.2/2, height/2-height/2/2, width/1.2, height/1.5);
+    fill("white");
+    text(blanks.madlib, width/2-width/1.2/2, height/1.8/2, width/1.2, height/1.4);
+    fill("black");
+
+    let restartButton = createButton("Restart");
+    restartButton.position(width/6, height-40);
+    restartButton.size(width/6, 20);
+    restartButton.style("background-color", "red");
+    restartButton.mousePressed(function() {
+      gameState = "Initialize";
+    });
+  }
 }
 
-function choices(){
-  textSize(30);
+function initialize(){
+  imageMode(CENTER);
   textAlign(CENTER);
-  text("What would you like to choose from the", width/2, height/6);
-  text("bottom two choices?", width/2, height/6+32);
-  textSize(18);
-  text("Please input 0 or 1", width/2, height/6+60);
+
+  zeroButton = createButton("0: Anna's Gardma's house");
+  zeroButton.position(width/2-(width/2)/2, height/3);
+  zeroButton.size(width/2, 60);
+  zeroButton.style('background-color', 'red');
+  // zeroButton.mousePressed(processInput(0));
   
-  // Showing the choices
-  textSize(26);
-  text("0: Anna's Gardma's house", width/2, height/3+40);
-  text("1: The World", width/2, height/3+80);
+  oneButton = createButton("1: The World");
+  oneButton.position(width/2-(width/2)/2, height/3+120);
+  oneButton.size(width/2, 60);
+  oneButton.style('background-color', 'blue');
+  // oneButton.mousePressed(processInput(1));
+
+  // Creating a button that once clicked saves whatever is in the input fields above
+  // Create a submit button
+  submitButton = createButton("Submit");
+  submitButton.position(width/2-(width/5)/2, height-(height/4));
+  submitButton.size(width/5, 30);
+  submitButton.style('background-color', 'green');
+  // submitButton.mousePressed(processInput);
+
+  // Creating User inputs
+  // User input for the verbs
+  verbIn = createInput();
+  verbIn.position(width/2-(width/2)/2, height/4);
+  verbIn.size(width/2, 30);
+
+  // User input for nouns
+  nounIn = createInput();
+  nounIn.position(width/2-(width/2)/2, height/4+80);
+  nounIn.size(width/2, 30);
+
+  // User input for adjectives
+  adjectiveIn = createInput();
+  adjectiveIn.position(width/2-(width/2)/2, height/4+160);
+  adjectiveIn.size(width/2, 30);
+
+  // zeroButton.hide();
+  // oneButton.hide();
+  submitButton.hide();
+  verbIn.hide();
+  nounIn.hide();
+  adjectiveIn.hide();
+  
 }
 
 function generateMadlib(i){
@@ -147,7 +193,17 @@ function generateMadlib(i){
   You believe?`][i];
 }
 
-// Resizes the Window according to 
+// Resizes the Window according to the window size
 function windowResized(){
   resizeCanvas(windowWidth, windowHeight);
+  oneButton.position(width/2-(width/2)/2, height/3+120);
+  zeroButton.position(width/2-(width/2)/2, height/3);
+  verbIn.position(width/2-(width/2)/2, height/4);
+  verbIn.size(width/2, 30);
+  nounIn.position(width/2-(width/2)/2, height/4+80);
+  nounIn.size(width/2, 30);
+  adjectiveIn.position(width/2-(width/2)/2, height/4+160);
+  adjectiveIn.size(width/2, 30);
+  submitButton.position(width/2-(width/5)/2, height-(height/4));
+  submitButton.size(width/5, 30);
 }
