@@ -35,11 +35,16 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   preload(); // Only calling this function because for some reason it decided to not autocall?
   initialize();
+  windowResized();
 }
 
 // Main drawing loop
 function draw() {
   background(220);
+
+  // Resizing the screen whenever neccesary
+  windowResized();
+
   // Drawing the logo at the top
   image(logo, width/2, logo.height/6, logo.width/3, logo.height/4);
   
