@@ -12,12 +12,12 @@ let blanks = {
   verb: "",
   noun: "",
   adjective: "",
-  madlib: "",
 };
 let i;
 let vy, ny, ay;
 let logo;
 let gameState = "Initialize";
+let madlib = [];
 
 function preload(){
   logo = loadImage("mad.png");
@@ -98,7 +98,11 @@ function end(){
   blanks.verb = verbIn.value();
   blanks.noun = nounIn.value();
   blanks.adjective = adjectiveIn.value();
-  blanks.madlib = generateMadlib(i);
+  console.log(madlib);
+  if (madlib){
+    madlib.pop();
+  }
+  madlib.push(generateMadlib(i));
   gameState = "showMadlib";
 }
 
@@ -109,7 +113,7 @@ function showMadlib(){
     noStroke();
     rect(width/2-width/1.2/2, height/2-height/2/2, width/1.2, height/1.5);
     fill("white");
-    text(blanks.madlib, width/2-width/1.2/2, height/1.8/2, width/1.2, height/1.4);
+    text(madlib[0], width/2-width/1.2/2, height/1.8/2, width/1.2, height/1.4);
     fill("black");
 
     let restartButton = createButton("Restart");
@@ -127,39 +131,39 @@ function initialize(){
   textAlign(CENTER);
 
   zeroButton = createButton("0: Anna's Gardma's house");
-  zeroButton.position(width/2-(width/2)/2, height/3);
+  zeroButton.position(width/2-width/2/2, height/3);
   zeroButton.size(width/2, 60);
-  zeroButton.style('background-color', 'red');
+  zeroButton.style("background-color", "red");
   // zeroButton.mousePressed(processInput(0));
   
   oneButton = createButton("1: The World");
-  oneButton.position(width/2-(width/2)/2, height/3+120);
+  oneButton.position(width/2-width/2/2, height/3+120);
   oneButton.size(width/2, 60);
-  oneButton.style('background-color', 'blue');
+  oneButton.style("background-color", "blue");
   // oneButton.mousePressed(processInput(1));
 
   // Creating a button that once clicked saves whatever is in the input fields above
   // Create a submit button
   submitButton = createButton("Submit");
-  submitButton.position(width/2-(width/5)/2, height-(height/4));
+  submitButton.position(width/2-width/5/2, height-height/4);
   submitButton.size(width/5, 30);
-  submitButton.style('background-color', 'green');
+  submitButton.style("background-color", "green");
   // submitButton.mousePressed(processInput);
 
   // Creating User inputs
   // User input for the verbs
   verbIn = createInput();
-  verbIn.position(width/2-(width/2)/2, height/4);
+  verbIn.position(width/2-width/2/2, height/4);
   verbIn.size(width/2, 30);
 
   // User input for nouns
   nounIn = createInput();
-  nounIn.position(width/2-(width/2)/2, height/4+80);
+  nounIn.position(width/2-width/2/2, height/4+80);
   nounIn.size(width/2, 30);
 
   // User input for adjectives
   adjectiveIn = createInput();
-  adjectiveIn.position(width/2-(width/2)/2, height/4+160);
+  adjectiveIn.position(width/2-width/2/2, height/4+160);
   adjectiveIn.size(width/2, 30);
 
   // zeroButton.hide();
@@ -196,14 +200,14 @@ function generateMadlib(i){
 // Resizes the Window according to the window size
 function windowResized(){
   resizeCanvas(windowWidth, windowHeight);
-  oneButton.position(width/2-(width/2)/2, height/3+120);
-  zeroButton.position(width/2-(width/2)/2, height/3);
-  verbIn.position(width/2-(width/2)/2, height/4);
+  oneButton.position(width/2-width/2/2, height/3+120);
+  zeroButton.position(width/2-width/2/2, height/3);
+  verbIn.position(width/2-width/2/2, height/4);
   verbIn.size(width/2, 30);
-  nounIn.position(width/2-(width/2)/2, height/4+80);
+  nounIn.position(width/2-width/2/2, height/4+80);
   nounIn.size(width/2, 30);
-  adjectiveIn.position(width/2-(width/2)/2, height/4+160);
+  adjectiveIn.position(width/2-width/2/2, height/4+160);
   adjectiveIn.size(width/2, 30);
-  submitButton.position(width/2-(width/5)/2, height-(height/4));
+  submitButton.position(width/2-width/5/2, height-height/4);
   submitButton.size(width/5, 30);
 }
