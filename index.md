@@ -9,9 +9,8 @@
 - [Sound and Images](08-sound-images)
 
 ## Projects
-- [Interactive Assignment/Tank Game v0](03-tank-game)
-- [Madlib Assignment](09-madlib-ass)
+- [Interactive Assignment / Tank Game v0](03-tank-game)
+- [Object Notation Assignment / Madlibs](09-madlib-ass)
 
 ## Experiments
 - [Ball Trajectory & Constructors](07-ball-trajectory)
-- [Madlib Assignment/Object-Notation TEST](09-madlib-ass-test)
