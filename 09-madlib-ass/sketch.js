@@ -5,7 +5,7 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-let submitButton, choiceButton;
+let submitButton, choiceButton, newButton;
 let userChoice;
 let verbIn, nounIn, adjectiveIn, uIn;
 let blanks = {
@@ -27,7 +27,9 @@ function setup() {
   ny = 60;
   ay = 100;
   imageMode(CENTER);
+  preLoad();
 }
+
 
 function draw() {
   background(220);
@@ -35,12 +37,18 @@ function draw() {
 }
 
 function startScreen(){
-  image(logo, width/2, -200);
+  image(logo, width/2, logo.height/6, logo.width/3, logo.height/4);
   textSize(30);
   textAlign(CENTER);
   text("Welcome to a basic madlib game!", width/2, height/3);
-  text("Select whether you would like a randomized madlib", width/2, height/3+30);
+  newButton = createButton("Select whether you would like a randomized madlib");
+  newButton.position(width/2, height/2+30);
+  // newButton.size(width/1.2, 30);
+  // text("Select whether you would like a randomized madlib", width/2, height/3+30);
+  textSize(20);
   text("OR", width/2, height/3+60);
+  textSize(30);
+  text("You select which madlib to do and play!", width/2, height/3+90);
 }
 
 function createUIn(){
@@ -137,4 +145,9 @@ function generateMadlib(i){
   world somewhere else. A ${blanks.adjective} theory would be that we are just someone else's 
   dream and the ${blanks.noun} will ${blanks.verb} when they wake up. Which ${blanks.noun} do 
   You believe?`][i];
+}
+
+// Resizes the Window according to 
+function windowResized(){
+  resizeCanvas(windowWidth, windowHeight);
 }
