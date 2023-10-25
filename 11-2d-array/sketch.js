@@ -86,3 +86,18 @@ function createEmpty2DArray(cols, rows){
   }
   return emptyGrid;
 }
+
+function mousePressed(){
+  let cellWidth = width/grid[0].length;
+  let cellHeight = width/grid.length;
+
+  let cellX = Math.floor(mouseX/cellWidth);
+  let cellY = Math.floor(mouseY/cellHeight);
+
+  if(grid[cellY][cellX] === 1){
+    grid[cellY][cellX] = 0;
+  }
+  else{
+    grid[cellY][cellX] = 1;
+  }
+}
