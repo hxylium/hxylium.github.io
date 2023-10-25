@@ -18,6 +18,7 @@
 //             [1, 1, 1, 1, 1]];
 
 let grid;
+let cellSize;
 const GRID_SIZE = 15;
 
 function setup() {
@@ -28,12 +29,15 @@ function setup() {
 function draw() {
   background(220);
   displayGrid();
+  if (height > width) {
+    cellSize = width/GRID_SIZE;
+  }
+  else {
+    cellSize = height/GRID_SIZE;
+  }
 }
 
 function displayGrid(){
-  let cellWidth = width/grid[0].length;
-  let cellHeight = width/grid.length;
-
   for(let y = 0; y < grid.length; y++){
     for(let x = 0; x < grid[y].length; x++){
       if(grid[y][x] === 0){
@@ -42,7 +46,7 @@ function displayGrid(){
       else{
         fill("black");
       }
-      rect(cellWidth * x, cellHeight * y, cellWidth, cellHeight);
+      rect(x * cellSize, y * cellSize, cellSize, cellSize);
     }
   }
 }
@@ -88,11 +92,8 @@ function createEmpty2DArray(cols, rows){
 }
 
 function mousePressed(){
-  let cellWidth = width/grid[0].length;
-  let cellHeight = width/grid.length;
-
-  let cellX = Math.floor(mouseX/cellWidth);
-  let cellY = Math.floor(mouseY/cellHeight);
+  let cellX = Math.floor(mouseX/cellSize);
+  let cellY = Math.floor(mouseY/cellSize);
 
   if(grid[cellY][cellX] === 1){
     grid[cellY][cellX] = 0;
