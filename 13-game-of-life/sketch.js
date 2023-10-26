@@ -20,6 +20,62 @@ function draw() {
   background(220);
   displayGrid();
 }
+function keyTyped(){
+  if (key === "r"){
+    grid = generateRandomGrid(GRID_SIZE, GRID_SIZE);
+  }
+  else if (key === "e"){
+    grid = generateEmptyGrid(GRID_SIZE, GRID_SIZE);
+  }
+  else if (key === " "){
+    grid = nextTurn();
+  }
+}
+
+function nextTurn(){
+  let nextTurnGrid = generateEmptyGrid(GRID_SIZE, GRID_SIZE);
+  for (let y=0;y<GRID_SIZE;y++){
+    for (let x=0;x<GRID_SIZE;x++){
+      // count neighbours
+      let neighbours = 0;
+
+      // look at everything around me
+      for (let i = -1; i <=1; i++){
+        for (let j = -1; i <= 1; j++){
+          if (y+i >= 0 && y+i < GRID_SIZE && x+j >= 0 && x+j < GRID_SIZE){
+            neighbours += grid[y+i][x+j];
+          }
+        }
+      }
+
+      // checking about counting self
+      neighbours -= grid[y][x];
+
+      // apply rules
+      if (grid[y][x] === 1){ // alive
+        if (neighbours === 2 || neighbours === 3){ // stay alive
+          nextTurnGrid[y][x] = 1;
+        }
+        else { // die
+          nextTurnGrid[y][x] = 0;
+        }
+      }
+
+      // dead
+      if (grid[y][x] === 0){
+        if (neighbours === 3){
+          // new birth
+          nextTurnGrid[y][x] = 1;
+        }
+        else {
+          // stay dead
+          nextTurnGrid[y][x] = 0;
+        }
+      }
+    }
+  }
+  return nextTurnGrid;
+}
 
 function mousePressed() {
   let y = Math.floor(mouseY/cellSize);
@@ -27,6 +83,7 @@ function mousePressed() {
 
   toggleCell(x, y);   //current cell
 }
+
 
 function toggleCell(x, y) {
   //check that we are within the grid, then toggle
