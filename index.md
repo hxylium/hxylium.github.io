@@ -17,3 +17,6 @@
 ## Experiments
 - [Ball Trajectory & Constructors](07-ball-trajectory)
 - [2D Array/Grid Neighbours](12-grid-neighbours)
+
+## Plagiarized code (Copied others assignments (Previous projects) to understand how it works)
+- [Path Finder (Alonso Bastidas)](path-finder)
