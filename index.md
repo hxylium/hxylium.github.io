@@ -9,6 +9,7 @@
 - [Sound and Images](08-sound-images)
 - [Terrain Generation](10-terrain)
 - [2D Array](11-2d-array)
+- [Character in grid](14-charachter-in-grid)
 
 ## Projects
 - [Interactive Assignment / Tank Game v0](03-tank-game)
