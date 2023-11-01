@@ -18,6 +18,7 @@
 ## Experiments
 - [Ball Trajectory & Constructors](07-ball-trajectory)
 - [2D Array/Grid Neighbours](12-grid-neighbours)
+- [Tic Tac Toe solver ai](15-ttt-ai)
 
 ## Plagiarized code (Copied others assignments (Previous projects) to understand how it works)
 - [Path Finder (Alonso Bastidas)](path-finder)
