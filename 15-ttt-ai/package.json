@@ -480,8 +480,5 @@
       "collidePointTriangle": true,
       "deltaTime": true
     }
-  },
-  "dependencies": {
-    "minimax": "^0.1.1"
   }
 }
