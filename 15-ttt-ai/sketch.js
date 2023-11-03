@@ -1,9 +1,10 @@
-// Project Title
-// Your Name
-// Date
+// Tic Tac Toe w/ ai
+// Hyder Shahzaib Ahmed
+// 11/3/2023
 //
 // Extra for Experts:
-// - describe what you did to take this project "above and beyond"
+// - Utilized Minimaxer Algorithm/AI to be played against the user
+
 
 
 function setup() {
