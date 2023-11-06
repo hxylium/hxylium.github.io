@@ -1,6 +1,6 @@
-//Dan Schellenberg
+// Dan Schellenberg
 
-//2D Arrays Example - No Objects Used
+// 2D Arrays Example - No Objects Used
 //  - loading platformer level data
 //  - WARNING: You do NOT want to have players/enemies as simply elements in a
 //     grid, if you try to convert this into a functional game. They would move
@@ -17,7 +17,7 @@ let lines;
 
 function preload() {
   //load level data
-  levelToLoad = "assets/levels/0.txt";
+  levelToLoad = "assets/levels/2.txt";
   lines = loadStrings(levelToLoad);
 
   //load background
@@ -55,7 +55,7 @@ function setup() {
 }
 
 function draw() {
-  // displayGrid();
+  displayGrid();
 }
 
 function displayGrid() {
