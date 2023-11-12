@@ -4,7 +4,7 @@
 
 let grid;
 
-let cellSize
+let cellSize;
 const GRID_SIZE = 15;
 
 function setup() {
