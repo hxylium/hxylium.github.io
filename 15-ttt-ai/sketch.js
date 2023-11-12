@@ -10,6 +10,7 @@ const cellSize = 100;
 
 let currentPlayer = "X";
 let gamestate = false;
+// let grid = [];
 
 let grid = [
   [0, 0, 0],
@@ -22,6 +23,7 @@ function setup() {
   textSize(60);
   stroke(69);
   drawGrid();
+  // grid = generateEmptyGrid(3, 3);
 }
 
 function draw() {
