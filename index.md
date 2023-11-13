@@ -15,11 +15,11 @@
 ## Projects
 - [Interactive Assignment / Tank Game v0](03-tank-game)
 - [Object Notation Assignment / Madlibs](09-madlib-ass)
+- [2D Array Grid-Based Game](15-ttt-ai)
 
 ## Experiments
 - [Ball Trajectory & Constructors](07-ball-trajectory)
 - [2D Array/Grid Neighbours](12-grid-neighbours)
-- [Tic Tac Toe solver ai](15-ttt-ai)
 
 ## Plagiarized code (Copied others assignments (Previous projects) to understand how it works)
 - [Path Finder (Alonso Bastidas)](path-finder)
