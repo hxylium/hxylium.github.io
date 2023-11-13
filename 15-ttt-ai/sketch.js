@@ -46,7 +46,7 @@ function run(){
       textSize(42);
       textAlign(CENTER, CENTER);
       noStroke();
-      text(`${gamestate}!`, cellSize*3/2, cellSize*3 + 40);
+      text(`${gamestate}!`, cellSize*3/2, cellSize*3 + 50);
     }
 
     // Displaying the winner
@@ -54,13 +54,13 @@ function run(){
       textSize(42);
       textAlign(CENTER, CENTER);
       noStroke();
-      text("AI wins!", cellSize*3/2, cellSize*3 + 40);
+      text("AI wins!", cellSize*3/2, cellSize*3 + 50);
     }
     else {
       textSize(42);
       textAlign(CENTER, CENTER);
       noStroke();
-      text("You win!", cellSize*3/2, cellSize*3 + 40);
+      text("You win!", cellSize*3/2, cellSize*3 + 50);
     }
   }
 }
@@ -120,6 +120,15 @@ function drawGrid() {
   // Predefining the colors to suit the game
   background(255);
   strokeWeight(4);
+
+  // Short Description
+  textSize(12);
+  noStroke();
+  textAlign(CENTER, CENTER);
+  text("TicTacToe w/ Unbeatable Ai", cellSize*3/2, cellSize*3 + 12);
+  textFont("Arial");
+  textSize(60);
+  stroke(72);
 
   // Drawing the grid
   for (let i=1; i<3; i++) {
