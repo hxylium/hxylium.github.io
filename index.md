@@ -10,7 +10,8 @@
 - [Terrain Generation](10-terrain)
 - [2D Array](11-2d-array)
 - [Character in grid](14-charachter-in-grid)
-- [PLatformer](16-platformer)
+- [Platformer](16-platformer)
+- [Dog OOP](17-dog-oop)
 
 ## Projects
 - [Interactive Assignment / Tank Game v0](03-tank-game)
