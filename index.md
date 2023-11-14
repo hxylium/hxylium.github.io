@@ -12,6 +12,7 @@
 - [Character in grid](14-charachter-in-grid)
 - [Platformer](16-platformer)
 - [Dog OOP](17-dog-oop)
+- [Walker OOP demo](18-walker-oop)
 
 ## Projects
 - [Interactive Assignment / Tank Game v0](03-tank-game)
