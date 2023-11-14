@@ -15,7 +15,7 @@
 ## Projects
 - [Interactive Assignment / Tank Game v0](03-tank-game)
 - [Object Notation Assignment / Madlibs](09-madlib-ass)
-- [2D Array Grid-Based Game](15-ttt-ai)
+- [2D Array Grid-Based Game / TicTacToe](15-ttt-ai)
 
 ## Experiments
 - [Ball Trajectory & Constructors](07-ball-trajectory)
