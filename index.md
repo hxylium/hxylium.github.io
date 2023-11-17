@@ -14,6 +14,7 @@
 - [Dog OOP](17-dog-oop)
 - [Walker OOP demo](18-walker-oop)
 - [Ball OOP](19-ball-oop)
+- [Conected Ball OOP](20-nodes)
 
 ## Projects
 - [Interactive Assignment / Tank Game v0](03-tank-game)
