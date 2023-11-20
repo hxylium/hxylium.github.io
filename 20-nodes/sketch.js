@@ -11,9 +11,11 @@ function setup() {
 function draw() {
   background(220);
   for (let point of points){
+    point.connectTo(points);
+  }
+  for (let point of points){
     point.update();
     point.display();
-    point.connectTo(points);
   }
 }
 
@@ -66,6 +68,19 @@ class MovingPoint {
     if (this.y > height){
       this.y = 0;
     }
+
+    // Adjust size based on mouse
+    let d = dist(this.x, this.y, mouseX, mouseY);
+    if (d < this.reach){
+      // Make the circle bigger
+      let theSize = map(d, 0, this.reach, 30, 15);
+      this.r = theSize;
+    }
+    else{
+      // Set circle to regular size
+      this.r = 15;
+    }
+
   }
 
   connectTo(pointsArray){
@@ -76,12 +91,6 @@ class MovingPoint {
           line(this.x, this.y, otherPoint.x, otherPoint.y);
         }
       }
-
-      // let d = dist(this.x, this.y, otherPoint.x, otherPoint.y);
-      // if (d < this.reach){
-      //   stroke(this.color);
-      //   line(this.x, this.y, otherPoint.x, otherPoint.y);
-      // }
     }
   }
 }
