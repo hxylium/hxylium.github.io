@@ -16,6 +16,7 @@
 - [Ball OOP](19-ball-oop)
 - [Conected Ball OOP](20-nodes)
 - [Fireworks OOP Demo](21-fireworks)
+- [Inheritence](22-Inheritence)
 
 ## Projects
 - [Interactive Assignment / Tank Game v0](03-tank-game)
