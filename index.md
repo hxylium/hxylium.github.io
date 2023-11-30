@@ -18,6 +18,7 @@
 - [Fireworks OOP Demo](21-fireworks)
 - [Inheritence](22-Inheritence)
 - [Collide 2D Demo](23-collide-2d)
+- [p5play demo](24-p5play)
 
 ## Projects
 - [Interactive Assignment / Tank Game v0](03-tank-game)
