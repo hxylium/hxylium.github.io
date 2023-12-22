@@ -19,6 +19,7 @@
 - [Inheritence](22-Inheritence)
 - [Collide 2D Demo](23-collide-2d)
 - [p5play demo](24-p5play)
+- [Recursive Circles](25-circle-recursion)
 
 ## Projects
 - [Interactive Assignment / Tank Game v0](03-tank-game)
