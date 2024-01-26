@@ -51,7 +51,7 @@ class Ball {
     fill(this.colour);
     noStroke();
     circle(this.x, this.y, this.radius*2);
-}
+  }
 }
 
 let myBalls = [];
